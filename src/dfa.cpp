@@ -86,7 +86,7 @@ int DFA::compute(std::string input) {
             std::cout << "inputting string <EMPTY STRING> into the DFA..." << std::endl;
         }
         else {
-            std::cout << "inputting string " << input << " into the DFA..." << std::endl;
+            std::cout << "inputting string \'" << input << "\' into the DFA..." << std::endl;
         }
         std::cout << "DFA state : " << dfa_cur_state() << std::endl;
     }

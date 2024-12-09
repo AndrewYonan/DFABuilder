@@ -17,21 +17,13 @@ int main(int argc, char** argv) {
         std::cout << "error configuring dfa from config file \'" << argv[1] << "\'" << std::endl;
         return 1;
     }
-
     else {
         std::cout << "DFA construction succeeded..." << std::endl;
     }
 
+    //dfa.set_verbose_mode(true);
+    dfa.compute_from_file("dfa_input_files/strings1.txt");
 
-    dfa.compute_from_file("dfa_build_files/strings1.txt");
-
- 
-    // dfa.set_verbose_mode(true);
-
-    // dfa.compute("abccba");
-    // dfa.compute("aaaaaaaaaaaabbbbbc");
-    // dfa.compute("abcbabcbabcbabcbabc");
-    
     return 0;
 }
 
