@@ -13,6 +13,8 @@ class DFA {
         std::set<std::string> acc_states;    
         std::set<char> alphabet;
 
+        bool verbose_mode = false;
+
         void print_states();
         void print_init_state();
         void print_acc_states();
@@ -43,6 +45,8 @@ class DFA {
         bool is_valid_dfa();
         int configure(std::string file_name);
         int compute(std::string input);
+        int compute_from_file(std::string filename);
+        void set_verbose_mode(bool);
         void print();
         
 };

@@ -5,7 +5,6 @@
 #include "dfa.h"
 
 
-
 int DFA::configure(std::string file_name) {
 
     std::string line;
@@ -56,6 +55,11 @@ int DFA::configure(std::string file_name) {
 
 }
 
+void DFA::set_verbose_mode(bool val) {
+    verbose_mode = val;
+}
+
+
 std::string DFA::dfa_cur_state() {
     return int_to_state(dfa_machine.get_state());
 }
@@ -76,32 +80,61 @@ bool DFA::in_accepting_state() {
 
 int DFA::compute(std::string input) {
 
-    std::cout << "inputting string " << input << " into the DFA..." << std::endl;
-    std::cout << "DFA state : " << dfa_cur_state() << std::endl;
+    if (verbose_mode) {
+
+        if (input == "") {
+            std::cout << "inputting string <EMPTY STRING> into the DFA..." << std::endl;
+        }
+        else {
+            std::cout << "inputting string " << input << " into the DFA..." << std::endl;
+        }
+        std::cout << "DFA state : " << dfa_cur_state() << std::endl;
+    }
 
     set_dfa_state(init_state);
 
     for (char c : input) {
 
         if (!is_valid_alphabet_char(c)) {
-            std::cout << "Error : input character not a member of DFA alphabet" << std::endl;
+            std::cout << "Error : input character \'" << c << "\' not a member of DFA alphabet" << std::endl;
             return -1;
         }
 
-        std::cout << "(" << dfa_cur_state() << ", " << c << ") --> ";
-        dfa_machine.step(alphabet_to_int(c));
-        std::cout << dfa_cur_state() << std::endl;
+        if (verbose_mode) {
+            std::cout << "(" << dfa_cur_state() << ", " << c << ") --> ";
+            dfa_machine.step(alphabet_to_int(c));
+            std::cout << dfa_cur_state() << std::endl;
+        }
+        else {
+            dfa_machine.step(alphabet_to_int(c));
+        }
+        
     }
 
     if (in_accepting_state()) {
-        std::cout << "\'" << input << "\' ACCEPTED" << std::endl; 
+        std::cout << "\'" << input << "\' ACCEPTED (final state = " << dfa_cur_state() << ")" << std::endl; 
     }
     else {
-        std::cout << "\'" << input << "\' REJECTED" << std::endl; 
+        std::cout << "\'" << input << "\' REJECTED (final state = " << dfa_cur_state() << ")" << std::endl; 
     }
 
     return 1;
 }
+
+int DFA::compute_from_file(std::string input_file_name) {
+
+    std::string line;
+    std::ifstream in_file(input_file_name);
+
+    if (!in_file.is_open()) {
+        std::cout << "Failed to open file \'" << input_file_name << "\'" << std::endl;
+        return -1;
+    }
+
+    while (std::getline(in_file, line)) compute(line);
+
+    return 1;
+}   
 
 
 bool DFA::all_possible_transitions_defined() {

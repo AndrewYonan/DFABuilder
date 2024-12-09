@@ -1,23 +1,36 @@
 #include <iostream>
 #include "dfa.h"
 
-
+/* Usage : dfa.compute() accepts a single string,
+or a text file containing a string on each line to compute  */
 
 int main(int argc, char** argv) {
 
-    DFA dfa;
-
-    if (dfa.configure("dfa_build_files/dfa.txt") < 0) {
-        std::cout << "error configuring dfa from config file" << std::endl;
+    if (argc < 2) {
+        std::cout << "Error : usage : <prog> <dfa_config_file>" << std::endl;
         return 1;
     }
-    else {
-        std::cout << "DFA construction succeeded." << std::endl;
+
+    DFA dfa;
+
+    if (dfa.configure(argv[1]) < 0) {
+        std::cout << "error configuring dfa from config file \'" << argv[1] << "\'" << std::endl;
+        return 1;
     }
 
-    dfa.compute("abccba");
-    dfa.compute("aaaaaaaaaaaabbbbbc");
-    dfa.compute("abcbabcbabcbabcbabc");
+    else {
+        std::cout << "DFA construction succeeded..." << std::endl;
+    }
+
+
+    dfa.compute_from_file("dfa_build_files/strings1.txt");
+
+ 
+    // dfa.set_verbose_mode(true);
+
+    // dfa.compute("abccba");
+    // dfa.compute("aaaaaaaaaaaabbbbbc");
+    // dfa.compute("abcbabcbabcbabcbabc");
     
     return 0;
 }
