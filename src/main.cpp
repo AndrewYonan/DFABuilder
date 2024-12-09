@@ -16,8 +16,8 @@ int main(int argc, char** argv) {
     }
 
     dfa.compute("abccba");
-    
-    // dfa.print();
+    dfa.compute("aaaaaaaaaaaabbbbbc");
+    dfa.compute("abcbabcbabcbabcbabc");
     
     return 0;
 }

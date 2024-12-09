@@ -31,6 +31,7 @@ class DFA {
         char int_to_alphabet(int);
         std::string int_to_state(int);
         std::string dfa_cur_state();
+        void set_dfa_state(std::string state);
 
         bool is_valid_state(std::string);
         bool is_valid_alphabet_char(char);

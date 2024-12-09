@@ -60,10 +60,16 @@ std::string DFA::dfa_cur_state() {
     return int_to_state(dfa_machine.get_state());
 }
 
+void DFA::set_dfa_state(std::string state) {
+    dfa_machine.set_state(state_to_int(state));
+}
+
 int DFA::compute(std::string input) {
 
     std::cout << "inputting string " << input << " into the DFA..." << std::endl;
     std::cout << "DFA state : " << dfa_cur_state() << std::endl;
+
+    set_dfa_state(init_state);
 
     for (char c : input) {
 
