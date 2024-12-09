@@ -1,4 +1,4 @@
-General finite state machine simulator in C++
+General finite state machine simulator (discrete finite automaton - DFA) in C++
 
 Example Usage Instructions:
 
