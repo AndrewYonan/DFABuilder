@@ -64,6 +64,16 @@ void DFA::set_dfa_state(std::string state) {
     dfa_machine.set_state(state_to_int(state));
 }
 
+bool DFA::in_accepting_state() {
+    for (std::string acc_state : acc_states) {
+        if (acc_state == dfa_cur_state()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 int DFA::compute(std::string input) {
 
     std::cout << "inputting string " << input << " into the DFA..." << std::endl;
@@ -83,8 +93,16 @@ int DFA::compute(std::string input) {
         std::cout << dfa_cur_state() << std::endl;
     }
 
+    if (in_accepting_state()) {
+        std::cout << "\'" << input << "\' ACCEPTED" << std::endl; 
+    }
+    else {
+        std::cout << "\'" << input << "\' REJECTED" << std::endl; 
+    }
+
     return 1;
 }
+
 
 bool DFA::all_possible_transitions_defined() {
     int** tf = dfa_machine.get_tf();

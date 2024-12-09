@@ -33,6 +33,7 @@ class DFA {
         std::string dfa_cur_state();
         void set_dfa_state(std::string state);
 
+        bool in_accepting_state();
         bool is_valid_state(std::string);
         bool is_valid_alphabet_char(char);
 

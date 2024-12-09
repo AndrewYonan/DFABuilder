@@ -1,8 +1,5 @@
 #include <iostream>
 
-#define MAX_STATES 1000
-#define MAX_ALPHABET 26
-
 #ifndef DFA_MACHINE_H
 #define DFA_MACHINE_H
 
