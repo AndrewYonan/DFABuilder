@@ -5,7 +5,6 @@ Example Usage Instructions:
 Navigate to the "src" directory 
 
 Compilation:
-run:
 $ make
 
 this produces an executable called "build_dfa", 
