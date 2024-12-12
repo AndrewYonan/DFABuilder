@@ -205,7 +205,7 @@ void gen_exec_dfa_obj(std::set<std::string>& states,
     int main(int argc, char** argv) {
 
         if (argc < 2) {
-            std::cout << "usage : <dfa_prog> <strings_input_file> <verbose_mode>" << std::endl;
+            std::cout << "usage : <dfa_prog> <strings_input_file> <verbose_mode = 0,1, or 2>" << std::endl;
             return 1;
         }
 
