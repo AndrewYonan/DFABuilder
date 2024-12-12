@@ -21,7 +21,7 @@ int main() {
     srand(seed * seed);
     
     std::vector<char> alphabet = {'a', 'b', 'c'};
-    const int ITERS = 100000;
+    const int ITERS = 1000000;
     const int str_length = 20;
     
     std::ofstream out_file("strings4.txt");
