@@ -16,8 +16,9 @@ class DFAMachine {
         int get_state();
         void set_num_states(int);
         void set_state(int);
-        void alloc_transition_func_mem(int, int);
+        int** alloc_transition_func_mem(int, int);
         void step(const int&);
+        void set_tf(int**&, int);
 
 };
 

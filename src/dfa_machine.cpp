@@ -31,7 +31,12 @@ void DFAMachine::set_state(int state) {
     _state = state;
 }
 
-void DFAMachine::alloc_transition_func_mem(int n_states, int alphabet_size) {
+void DFAMachine::set_tf(int**& tf, int n_states) {
+    set_num_states(n_states);
+    _tf = tf;
+}
+
+int** DFAMachine::alloc_transition_func_mem(int n_states, int alphabet_size) {
     num_states = n_states;
     _tf = new int*[num_states];
     for (int i = 0; i < num_states; ++i) {
@@ -40,5 +45,6 @@ void DFAMachine::alloc_transition_func_mem(int n_states, int alphabet_size) {
             _tf[i][j] = -1;
         }
     }
+    return _tf;
 }
 

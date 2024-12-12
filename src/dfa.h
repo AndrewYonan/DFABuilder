@@ -13,20 +13,12 @@ class DFA {
         std::set<std::string> acc_states;    
         std::set<char> alphabet;
 
-        bool verbose_mode = false;
-
         void print_states();
         void print_init_state();
         void print_acc_states();
         void print_alphabet();
         void print_transition_function();
         void print_raw_transition_function();
-
-        int extract_states(std::ifstream&);
-        int extract_init_state(std::ifstream&);
-        int extract_acc_states(std::ifstream&);
-        int extract_alphabet(std::ifstream&);
-        int extract_transition_function(std::ifstream&);
 
         int state_to_int(std::string);
         int alphabet_to_int(char);
@@ -38,15 +30,25 @@ class DFA {
         bool in_accepting_state();
         bool is_valid_state(std::string);
         bool is_valid_alphabet_char(char);
+        int verbose_mode = false;
 
     public:
 
-        bool all_possible_transitions_defined();
-        bool is_valid_dfa();
-        int configure(std::string file_name);
-        int compute(std::string input);
+        void set_init_state(const std::string& state);
+        void set_states(const std::set<std::string>&);
+        void set_accept_states(const std::set<std::string>&);
+        void set_alphabet(const std::set<char>&);
+        void set_transition_function(int**&, int);
+
+        bool compute(std::string input);
         int compute_from_file(std::string filename);
-        void set_verbose_mode(bool);
+        void set_verbose_mode(int);
         void print();
+
+        void configure(std::set<std::string>& states,
+                    std::string& init_state,
+                    std::set<std::string>& acc_states,
+                    std::set<char>& alphabet,
+                    int**& tf);
         
 };
