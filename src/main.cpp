@@ -244,11 +244,14 @@ void gen_exec_dfa_obj(std::set<std::string>& states,
     system(gcc.c_str());
 
     assert(cpp_file_name == "dfa_core.cpp");
-    std::remove(cpp_file_name.c_str());
+    //std::remove(cpp_file_name.c_str());
 
     std::cout << "DFA executable configured successfully..." << std::endl;
     std::cout << "Now run the DFA executable \'dfa\' ..." << std::endl;
 }
+
+
+
 
 
 

@@ -1,0 +1,28 @@
+
+Bob Spaghetti Albert Susan Alice
+
+Albert
+
+Bob Susan
+
+a b c
+
+(Bob, a) -> Alice
+(Bob, b) -> Spaghetti
+(Bob, c) -> Albert
+
+(Spaghetti, a) -> Susan
+(Spaghetti, b) -> Alice
+(Spaghetti, c) -> Susan
+
+(Albert, a) -> Spaghetti
+(Albert, b) -> Albert
+(Albert, c) -> Alice
+
+(Susan, a) -> Alice
+(Susan, b) -> Alice
+(Susan, c) -> Spaghetti
+
+(Alice, a) -> Albert
+(Alice, b) -> Spaghetti
+(Alice, c) -> Alice
