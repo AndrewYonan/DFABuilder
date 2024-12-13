@@ -150,7 +150,7 @@ char int_ID_to_alphabet(const int& ID, const std::set<char>& alphabet) {
 int extract_transition_function(int** tf, const std::set<std::string>& states, const std::set<char>& alphabet, std::ifstream& in_file) {
 
     std::string line;
-    std::regex tf_pattern("\\(\\s*([^,]+)\\s*,\\s*(.?)\\s*\\)\\s*->\\s*(.+)");
+    std::regex tf_pattern("\\(\\s*([^,]+)\\s*,\\s*(.?)\\s*\\)\\s+.*\\s+(.+)");
     std::smatch matches;
     std::streampos tf_line_start;
 
